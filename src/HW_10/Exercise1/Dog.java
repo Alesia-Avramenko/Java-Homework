@@ -1,4 +1,4 @@
-package Exercise1;
+package HW_10.Exercise1;
 
 public class Dog extends Animal {
 

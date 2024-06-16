@@ -1,3 +1,6 @@
+package HW_6;
+
+import HW_6.Employee;
 
 public class Lesson6 {
 
@@ -11,7 +14,6 @@ public class Lesson6 {
         employee2.info();
 
 // 2
-
         Employee[] employees = new Employee[5];
 
         employees[0] = new Employee(1, "Иван Иванов", "Менеджер", "ivanivan@mailbox.com", "89991119", 80000, 35);

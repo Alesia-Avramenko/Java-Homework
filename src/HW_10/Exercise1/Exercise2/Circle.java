@@ -1,4 +1,4 @@
-package Exercise2;
+package HW_10.Exercise1.Exercise2;
 
 public class Circle implements Measurable, Colorable {
     private double radius;

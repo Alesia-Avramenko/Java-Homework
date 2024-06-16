@@ -1,4 +1,4 @@
-package Exercise2;
+package HW_10.Exercise1.Exercise2;
 
 public interface Measurable {
     double getPerimeter();

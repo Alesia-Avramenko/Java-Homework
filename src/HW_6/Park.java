@@ -1,6 +1,7 @@
+package HW_6;
+
 public class Park {
     public static void main(String[] args) {
-
         Attraction[] attractions = {new Attraction("Тир", "17:00 - 22:00", 20.0), new Attraction("Пещера ужасов", "11:00 - 21:00", 30.0), new Attraction("Комната кривых зеркал", "11:00 - 22:00", 25.0)};
 
         Park park = new Park("Парк развлечений", attractions);
