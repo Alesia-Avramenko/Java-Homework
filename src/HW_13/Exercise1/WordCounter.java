@@ -16,7 +16,7 @@ public class WordCounter {
 
     public static void printUniqueWords(String[] words) {
         Set<String> uniqueWords = new HashSet<>(convertArrayToList(words));
-        System.out.println("Список уникальных слов: " + uniqueWords);
+        System.out.println("Список уникальных слов:\n" + uniqueWords);
     }
 
     public static void printWordCount(String[] words) {
@@ -29,7 +29,7 @@ public class WordCounter {
             }
         }
 
-        System.out.println("Количество повторений каждого слова:");
+        System.out.println("\nКоличество повторений каждого слова:");
         for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
