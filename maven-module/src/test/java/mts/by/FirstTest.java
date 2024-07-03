@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class FirstTest extends WebDriverSettings {
 
@@ -71,7 +72,7 @@ public class FirstTest extends WebDriverSettings {
 
     @Test
 
-    public void testBattonContinue() {
+    public void testBattonContinue() throws InterruptedException {
         WebElement servicesDropdown = driver.findElement(By.xpath("//*[(@class='select__header')]"));
         servicesDropdown.click();
 
@@ -90,12 +91,15 @@ public class FirstTest extends WebDriverSettings {
         TestSettings.clickElement(driver, continueButton);
 
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(
-                ExpectedConditions.and(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[(@class='app-wrapper')]//div [@class='app-wrapper__content']//div[@class='pay-description__cost']")),
-                        ExpectedConditions.presenceOfElementLocated(By.xpath("//*[(@class='app-wrapper')]//div [@class='app-wrapper__content']//div[@class='pay-description__cost']"))));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        WebElement iframeElement = driver.findElement(By.xpath("//*[contains(@class, 'bepaid-iframe')]"));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).
+                until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframeElement));
+
+        Thread.sleep(3000);
 
 
     }
+
 }
