@@ -99,6 +99,8 @@ public class FirstTest extends WebDriverSettings {
 
         Thread.sleep(3000);
 
+        System.out.println("Поля заполнены, переход по кнопке корректен");
+
 
     }
 
