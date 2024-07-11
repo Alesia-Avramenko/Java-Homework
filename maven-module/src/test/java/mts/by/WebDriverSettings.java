@@ -20,6 +20,7 @@ public class WebDriverSettings {
     @Before
     public void setUp() {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get("http://mts.by/");
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -27,6 +28,7 @@ public class WebDriverSettings {
 
         cookieButton();
     }
+
 
     public void cookieButton() {
         WebElement cookieButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[text()='Принять']")));
