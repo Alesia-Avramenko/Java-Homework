@@ -1,19 +1,24 @@
 package mts.by;
 
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static io.qameta.allure.SeverityLevel.CRITICAL;
+import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
-
+@Feature(value = "Application forms testing")
 public class MtsPayTest {
 
     private WebDriver driver;
@@ -38,8 +43,7 @@ public class MtsPayTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         driver.get("https://mts.by");
-        if (!driver.findElements(By.xpath("//div[@class='cookie__wrapper']")).isEmpty() &&
-                driver.findElement(By.xpath("//div[@class='cookie__wrapper']")).isDisplayed()) {
+        if (driver.findElement(By.xpath("//div[@class='cookie__wrapper']")).isDisplayed()) {
             driver.findElement(By.xpath("//button[@id='cookie-agree']")).click();
         }
     }
@@ -50,7 +54,11 @@ public class MtsPayTest {
         this.driver.quit();
     }
 
-    @Test
+    @Description(value = "Testing the inscriptions in the blank fields of each payment option for services")
+    @Link(name = "Fields", url = "https://mts.by/")
+    @Owner(value = "Alesia Avramenko")
+    @Severity(CRITICAL)
+    @Test(testName = "Fields testing", priority = 1)
     public void checkFields() {
         Actions builder = new Actions(driver);
         builder
@@ -73,7 +81,11 @@ public class MtsPayTest {
         }
     }
 
-    @Test
+    @Description(value = "Testing the sum of money in a pop-up window")
+    @Link(name = "Check sum", url = "https://mts.by/")
+    @Owner(value = "Alesia Avramenko")
+    @Severity(CRITICAL)
+    @Test(testName = "Checking correct sum of money", priority = 2)
     public void checkSumInForm() {
         filling();
         WebElement sumSpan = driver.findElement(By.xpath("//div[@class='pay-description__cost']/span"));
@@ -106,7 +118,11 @@ public class MtsPayTest {
         driver.switchTo().frame(iframe);
     }
 
-    @Test
+    @Description(value = "Testing the phone number in a pop-up window")
+    @Link(name = "Check number", url = "https://mts.by/")
+    @Owner(value = "Alesia Avramenko")
+    @Severity(CRITICAL)
+    @Test(testName = "Checking correct phone number", priority = 3)
     public void checkNumberInForm() {
         filling();
         WebElement divElement = driver.findElement(By.xpath("//div[@class='pay-description__text']"));
@@ -115,7 +131,11 @@ public class MtsPayTest {
         assertEquals(actualPhoneNumber, CHECK_NUMBER);
     }
 
-    @Test
+    @Description(value = "Testing the fill labels in a pop-up window")
+    @Link(name = "Check the fill label", url = "https://mts.by/")
+    @Owner(value = "Alesia Avramenko")
+    @Severity(CRITICAL)
+    @Test(testName = "Checking the fill labels in the fields", priority = 4)
     public void checkPlaceholderInForm() {
         filling();
         List<WebElement> labels = driver.findElements(By.xpath("//app-card-input//label"));
@@ -125,7 +145,11 @@ public class MtsPayTest {
         }
     }
 
-    @Test
+    @Description(value = "Testing the icons in a pop-up window")
+    @Link(name = "Check the icons", url = "https://mts.by/")
+    @Owner(value = "Alesia Avramenko")
+    @Severity(CRITICAL)
+    @Test(testName = "Checking the icons in a pop-up window", priority = 5)
     public void checkIcons() {
         filling();
         List<WebElement> icons = driver.findElements(By.xpath("//div[contains(@class,'cards-brands__container')]/img"));

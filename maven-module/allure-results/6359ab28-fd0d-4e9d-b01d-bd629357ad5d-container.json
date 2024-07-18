@@ -1,0 +1,1 @@
+{"uuid":"6359ab28-fd0d-4e9d-b01d-bd629357ad5d","name":"mts.by.MtsPayTest.openApp","children":["b2172a7b-03bb-4cb7-bdcb-8d866dcc8ce5"],"description":"","befores":[{"name":"openApp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1721335380962,"stop":1721335401369}],"afters":[],"start":1721335380962,"stop":1721335401369}
